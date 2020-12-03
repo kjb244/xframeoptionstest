@@ -8,6 +8,7 @@ const whiteList = ['localhost:3000', 'https://www.google.com'];
 
 router.use(function (req, res, next) {
   const host = req.headers.host;
+  console.log(host);
   const whiteListFound = whiteList.indexOf(host) > -1;
   if (whiteListFound){
       res.header('X-FRAME-OPTIONS', 'SAMEORIGIN');

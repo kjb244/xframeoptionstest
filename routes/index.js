@@ -14,11 +14,9 @@ router.use(function (req, res, next) {
   console.log('host log', host);
   console.log('referrer log', referer);
   const whiteListFound = whiteList.indexOf(referer) > -1;
-  if (whiteListFound){
-      res.header('X-FRAME-OPTIONS', 'SAMEORIGIN');
-  } else{
-        res.header('X-FRAME-OPTIONS', 'DENY');
-    }
+  if (!whiteListFound){
+      res.header('X-FRAME-OPTIONS', 'DENY');
+  }
   next();
 
 
